@@ -1,6 +1,95 @@
+:root {
+    --color-accent: oklch(65% 0.2 180); /* Turquoise in OKLCH */
+}
+
 body {
     /* Set line height to 1.5 times the font size
-         and use the OS’s UI font as the website font
+         and use the OS's UI font as the website font
        */
     font: 100%/1.5 system-ui;
-  }
+    max-width: 90ch;
+    margin-inline: auto;
+    padding-inline: 1rem;
+ 
+    accent-color: var(--color-accent);
+    background-color: oklch(from var(--color-accent) 95% 5% h);
+}
+
+nav {
+    display: flex;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid oklch(80% 3% 200);
+}
+
+nav a {
+    flex: 1;
+    text-decoration: none;
+    color: inherit;
+    text-align: center;
+    padding: 0.5em;
+   
+    transition: border-color 0.2s;
+}
+
+nav a.current {
+    font-weight: bold;
+    border-bottom: 0.4em solid oklch(85% 3% 200);
+    padding-bottom: 0.1em;
+}
+
+nav a:hover:not(.current) {
+    
+    border-bottom: 0.4em solid var(--color-accent);
+    padding-bottom: 0.1em;
+}
+
+input,
+textarea,
+button {
+    font: inherit;
+}
+
+form {
+    /* Add some space around the form */
+    max-width: 40em;
+    margin: 2rem auto;
+    /* Enable Grid layout */
+    display: grid;
+    /* Define two columns: labels and inputs */
+    grid-template-columns: auto 1fr;
+    /* Add spacing between rows */
+    gap: 1em;
+}
+
+/* Style labels as grid containers */
+label {
+    /* Make labels span full width */
+    grid-column: 1 / -1;
+    /* Make labels grid containers */
+    display: grid;
+    grid-template-columns: subgrid;
+}
+
+/* Right-align only the label text, not the input */
+label::before {
+    content: attr(for);
+    text-align: right;
+    padding-right: 0.5rem;
+}
+
+/* Make inputs and textareas fill their space */
+input,
+textarea {
+    width: 100%;
+    padding: 0.3em 0.5em;
+    /* Ensure left alignment for input text */
+    text-align: left;
+}
+
+/* Make the button span both columns */
+button {
+    grid-column: 1 / -1;
+    justify-self: center;
+    margin-top: 1rem;
+    padding: 0.5em 1em;
+}
