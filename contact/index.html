@@ -18,7 +18,7 @@
     </nav>-->
 
     <form action="mailto:kevinkchen1@gmail.com" method="POST" enctype="text/plain">
-        <label>
+        <!--<label>
             Your Email:
             <input type="email" name="email" required>
         </label>
@@ -36,7 +36,18 @@
         </label>
         <br><br>
 
-        <button>Send</button>
+        <button>Send</button>-->
+    <label>Your Email:</label>
+    <input type="email" name="email" required>
+
+    <label>Subject:</label>
+    <input name="subject" required>
+
+    <label>Message:</label>
+    <textarea name="body"></textarea>
+
+    <button>Send</button>
+        
     </form>
     <script type="module" src="../global.js"></script>
 </body>

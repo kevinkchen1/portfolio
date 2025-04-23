@@ -69,10 +69,15 @@ form {
 
 label {
    
-    grid-column: 1 / -1;
+    
   
-    display: grid;
+    /*display: grid;
     grid-template-columns: subgrid;
+    grid-column: 1 / -1;*/
+    text-align: right;
+    align-self: center;
+    
+
 }
 
 
