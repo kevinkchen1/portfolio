@@ -3,18 +3,21 @@
         "title": "NBA Data Analysis",
         "year": 2024,
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "url": "https://github.com/kevinkchen1/NBA-Data-Analysis",
         "description": "My team and I were interested in exploring how NBA teams' field goal percentages, turnovers, and rebounds relate to each other, how these metrics may have changed in the NBA over time. "
     },
     {
         "title": "Would'Ja",
         "year": 2024,
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "url": "https://github.com/kevinkchen1/Would-Ja",
         "description": "We created Would'Ja to bring more excitement into moments with friends and inspire outdoor adventures. Our application is designed to encourage people to step outside, engage in activities, and create unforgettable memories with their friends."
     },
     {
         "title": "Safe Grub",
         "year": 2023,
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "url": "https://github.com/kevinkchen1/SafeGrub",
         "description": "Safe Grub is a web application developed to assist individuals in quickly identifying potential allergens in food products. "
     },
     {
