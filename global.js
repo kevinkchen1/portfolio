@@ -93,6 +93,8 @@ function initializePage() {
 
 initializePage();
 
+
+
 export async function fetchJSON(url) {
     try {
       // Fetch the JSON file from the given URL
@@ -107,7 +109,74 @@ export async function fetchJSON(url) {
     }
   }
 
-export function renderProjects(project, containerElement, headingLevel = 'h2') {
+  export function renderProjects(projects, containerElement, headingLevel = 'h2') {
+    // Check if the containerElement is a valid DOM element
+    if (!(containerElement instanceof HTMLElement)) {
+        console.error('Invalid container element provided.');
+        return;
+    }
+  
+    // Clear existing content in the container
+    containerElement.innerHTML = '';
+  
+    // Validate heading level
+    const validHeadingLevels = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
+    const headingTag = validHeadingLevels.includes(headingLevel) ? headingLevel : 'h2';
+  
+    // Loop through each project and create an article element
+    projects.forEach(project => {
+        const article = document.createElement('article');
+  
+        // Create the content with year information
+        article.innerHTML = `
+            <${headingTag}>${project.title || 'Untitled Project'}</${headingTag}>
+            <img src="${project.image || 'path/to/default/image.png'}" alt="${project.title || 'Project Image'}" style="width: 300px; height: 200px; object-fit: cover;">
+            <div class="project-content">
+                <p class="project-description">${project.description || 'No description available.'}</p>
+                <p class="project-year" style="margin-bottom: 0.2rem;">${project.year ? `Year: ${project.year}` : 'Year not specified'}</p>
+                <p class="project-url">
+                    <a href="${project.url}" target="_blank">View Project</a>
+                </p>
+            </div>
+        `;
+  
+        // Add CSS styles to the article element
+        article.style.cssText = `
+            display: grid;
+            gap: 1rem;
+        `;
+  
+        // Style the project content container
+        const projectContent = article.querySelector('.project-content');
+        if (projectContent) {
+            projectContent.style.cssText = `
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+            `;
+        }
+  
+        // Style the year text
+        const yearElement = article.querySelector('.project-year');
+        if (yearElement) {
+            yearElement.style.cssText = `
+                font-style: italic;
+                color: var(--text-color);
+                opacity: 0.8;
+                margin-top: 0.5rem;
+            `;
+        }
+  
+        // Append the article to the container
+        containerElement.appendChild(article);
+    });
+  }
+  
+  export async function fetchGitHubData(username) {
+    // return statement here
+    return fetchJSON(`https://api.github.com/users/${username}`);
+}
+ /* export function renderProjects(project, containerElement, headingLevel = 'h2') {
     // Your code will go here
     if (!containerElement) {
         console.error('Invalid container element');
@@ -134,10 +203,7 @@ export function renderProjects(project, containerElement, headingLevel = 'h2') {
         containerElement.appendChild(article);
     }
 
-  }
+  }*/
   
-export async function fetchGitHubData(username) {
-    // return statement here
-    return fetchJSON(`https://api.github.com/users/${username}`);
-}
+   
   

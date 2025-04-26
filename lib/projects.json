@@ -1,61 +1,73 @@
 [
     {
-        "title": "Lorem ipsum dolor sit.",
+        "title": "NBA Data Analysis",
+        "year": 2024,
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore eos id et unde vero rem ipsum omnis praesentium! Ut magni iusto sapiente exercitationem? Culpa, earum temporibus ex fugiat sint error."
+        "description": "My team and I were interested in exploring how NBA teams' field goal percentages, turnovers, and rebounds relate to each other, how these metrics may have changed in the NBA over time. "
     },
     {
-        "title": "Repellendus provident cum magni.",
+        "title": "Would'Ja",
+        "year": 2024,
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Debitis omnis pariatur, molestias ab sint consectetur et quod laudantium sit odio blanditiis beatae dolore vel dolorum sunt fugiat ipsam magnam iure labore quo ducimus corrupti harum. Rerum, voluptates asperiores!"
+        "description": "We created Would'Ja to bring more excitement into moments with friends and inspire outdoor adventures. Our application is designed to encourage people to step outside, engage in activities, and create unforgettable memories with their friends."
     },
     {
-        "title": "Corporis ea repudiandae maxime.",
+        "title": "Safe Grub",
+        "year": 2023,
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Soluta quaerat consequatur nesciunt quas, voluptatibus odio ipsam veniam doloremque porro ad rem dolorem voluptates recusandae iusto fugit dolores, eum vitae! Vero fugiat ipsa, ea natus soluta quidem repellendus vel."
+        "description": "Safe Grub is a web application developed to assist individuals in quickly identifying potential allergens in food products. "
     },
     {
         "title": "Aspernatur neque repudiandae odit!",
+        "year": 2023,
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "At laudantium fugiat quidem reiciendis suscipit odit dolores eveniet cum dicta molestiae, tenetur laboriosam amet cumque, quibusdam tempora delectus voluptate ut ad repellendus nobis ab aliquam consectetur dolorem? Voluptatum, id?"
     },
     {
         "title": "Fuga accusamus harum est!",
+        "year": 2023,
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Eveniet, molestias iure, assumenda fugit vero deserunt in ut sapiente consectetur accusantium obcaecati necessitatibus eum voluptatem exercitationem dolorum quaerat tenetur odit enim consequatur, dolorem ea vel delectus quidem laudantium. Earum?"
     },
     {
         "title": "Eveniet veniam ex illo?",
+        "year": 2022,
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Saepe sit dolorum, aspernatur doloremque, dolores placeat fuga dolorem labore sed rem, harum quae? Aut doloremque reprehenderit eveniet maxime dolores odio exercitationem natus consectetur, neque vero repudiandae. Adipisci, nisi aliquid."
     },
     {
         "title": "Repellendus sequi veritatis repudiandae.",
+        "year": 2022,
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Accusamus eos magni delectus quidem cum. Iusto ea aperiam atque, dolore aspernatur sapiente autem, ab earum minima natus qui totam reiciendis et ipsa pariatur neque eius porro, distinctio commodi perspiciatis?"
     },
     {
         "title": "Sequi recusandae quo sint.",
+        "year": 2022,
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Animi quas, molestias praesentium eaque similique perferendis dignissimos perspiciatis nemo autem quo, nostrum beatae iste ex odit est accusantium earum qui rem, fugit soluta voluptatum inventore consequuntur saepe sunt? Nostrum!"
     },
     {
         "title": "Soluta iste quasi minima.",
+        "year": 2022,
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Rerum, ullam! Culpa, quibusdam dolorem officia corrupti dolores sapiente quis sed a temporibus tempora ipsam minima ratione id repudiandae repellendus adipisci. Molestias facilis dolore ratione modi itaque assumenda fugiat magni?"
     },
     {
         "title": "Officia nemo sequi voluptate.",
+        "year": 2022,
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Facere officia assumenda blanditiis mollitia similique nostrum quos harum, fuga ipsum dignissimos reiciendis. Neque adipisci aut similique modi, facilis, corrupti sed totam ullam, optio recusandae tenetur quidem quia non. Aliquid!"
     },
     {
         "title": "Necessitatibus accusantium quis quos.",
+        "year": 2021,
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Optio mollitia maxime vitae facere explicabo iste soluta molestias, voluptate inventore sequi provident dicta repellat esse culpa sed illum officia excepturi ipsam iure laudantium earum quo voluptatibus vel pariatur! Animi?"
     },
     {
         "title": "Esse vitae laboriosam temporibus.",
+        "year": 2021,
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Perspiciatis dignissimos quos iusto ab autem molestiae sed quo adipisci, quis voluptates quibusdam explicabo itaque repellendus, numquam quisquam voluptatem illum nisi culpa expedita aliquid! Iure, repudiandae? Esse quibusdam maiores qui."
     }

@@ -277,3 +277,27 @@ section p {
     right: 1rem;
     font-size: 80%;
 }
+
+#profile-stats {
+    margin-top: 1rem;
+    background: #f9f9f9;
+    padding: 1rem;
+    border-radius: 8px;
+  }
+  
+  #profile-stats dl {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
+    gap: 1rem;
+    text-align: center;
+  }
+  
+  #profile-stats dt {
+    font-weight: bold;
+    grid-row: 1; /* All <dt> in row 1 */
+  }
+  
+  #profile-stats dd {
+    margin: 0;
+    grid-row: 2; /* All <dd> in row 2 */
+  }

@@ -1,4 +1,4 @@
-import { fetchJSON, renderProjects, fetchGithubData } from './global.js';
+import { fetchJSON, renderProjects, fetchGitHubData } from './global.js';
 const projects = await fetchJSON('./lib/projects.json');
 const latestProjects = projects.slice(0, 3);
 const projectsContainer = document.querySelector('.projects');
@@ -19,4 +19,26 @@ if (profileStats) {
           </dl>
       `;
   }
+
+  async function loadProfileStats() {
+    const response = await fetch('https://api.github.com/users/kevinkchen1');
+    const data = await response.json();
+  
+    const statsHTML = `
+      <dl>
+        <dt>Repos</dt>
+        <dt>Followers</dt>
+        <dt>Following</dt>
+        <dt>Gists</dt>
+        <dd>${data.public_repos}</dd>
+        <dd>${data.followers}</dd>
+        <dd>${data.following}</dd>
+        <dd>${data.public_gists}</dd>
+      </dl>
+    `;
+  
+    document.getElementById('profile-stats').innerHTML = statsHTML;
+  }
+  
+  loadProfileStats();
   
