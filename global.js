@@ -135,7 +135,7 @@ export async function fetchJSON(url) {
                 <p class="project-description">${project.description || 'No description available.'}</p>
                 <p class="project-year" style="margin-bottom: 0.2rem;">${project.year ? `Year: ${project.year}` : 'Year not specified'}</p>
                 <p class="project-url">
-                    <a href="${project.url}" target="_blank"></a>
+                    <a href="${project.url}" target="_blank">View Project</a>
                 </p>
             </div>
         `;
@@ -171,7 +171,7 @@ export async function fetchJSON(url) {
         containerElement.appendChild(article);
     });
   }
-
+  
   export async function fetchGitHubData(username) {
     // return statement here
     return fetchJSON(`https://api.github.com/users/${username}`);
