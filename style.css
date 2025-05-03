@@ -301,3 +301,44 @@ section p {
     margin: 0;
     grid-row: 2; /* All <dd> in row 2 */
   }
+  #projects-pie-plot {
+    max-width: 20em;
+    margin-block: 2em;
+  
+    overflow: visible;
+  }
+
+  .container {
+    display: flex;
+    align-items: flex-start;
+    gap: 0rem;            /* Reduce horizontal space between pie and legend */
+    margin-bottom: 0rem;
+    flex: 1
+  }
+  
+  .legend {
+    flex: 1;
+    list-style: none;
+    padding: 1em;
+    margin: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+    gap: 1em;
+}
+  
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .swatch {
+    width: 1em;
+    height: 1em;
+    aspect-ratio: 1 / 1;
+    background-color: var(--color);
+    border-radius: 3px;
+    display: inline-block;
+  }
