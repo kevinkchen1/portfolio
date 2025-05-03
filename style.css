@@ -278,45 +278,60 @@ section p {
     font-size: 80%;
 }
 
+  
+
 #profile-stats {
     margin-top: 1rem;
-    background: #f9f9f9;
+    /*background: #f9f9f9;*/
     padding: 1rem;
     border-radius: 8px;
+    background: var(--profile-bg);
+    color: var(--profile-text);
   }
   
-  #profile-stats dl {
+#profile-stats dl {
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
     gap: 1rem;
     text-align: center;
-  }
+}
   
-  #profile-stats dt {
+#profile-stats dt {
     font-weight: bold;
     grid-row: 1; /* All <dt> in row 1 */
+    }
+
+#profile-stats dd {
+    margin: 0;
+    grid-row: 2;
+  }
+
+:root {
+    --profile-bg: #f9f9f9;
+    --profile-text: #000;
   }
   
-  #profile-stats dd {
-    margin: 0;
-    grid-row: 2; /* All <dd> in row 2 */
-  }
-  #projects-pie-plot {
+html.dark {
+    --profile-bg: #1e1e1e;
+    --profile-text: #fff;
+}
+
+#projects-pie-plot {
     max-width: 20em;
     margin-block: 2em;
   
     overflow: visible;
   }
 
-  .container {
+.container {
     display: flex;
     align-items: flex-start;
-    gap: 0rem;            /* Reduce horizontal space between pie and legend */
+    gap: 0rem;            
     margin-bottom: 0rem;
     flex: 1
   }
   
-  .legend {
+.legend {
     flex: 1;
     list-style: none;
     padding: 1em;
@@ -328,13 +343,13 @@ section p {
     gap: 1em;
 }
   
-  .legend-item {
+.legend-item {
     display: flex;
     align-items: center;
     gap: 0.5rem;
   }
   
-  .swatch {
+.swatch {
     width: 1em;
     height: 1em;
     aspect-ratio: 1 / 1;
@@ -342,3 +357,35 @@ section p {
     border-radius: 3px;
     display: inline-block;
   }
+
+&:has(path:hover) {
+    path:not(:hover) {
+      opacity: 0.5;
+    }
+  }
+  path {
+    transition: 300ms;
+    cursor: pointer;
+  }
+.selected {
+    --color: oklch(60% 45% 0) !important;
+  
+    &:is(path) {
+      fill: var(--color);
+    }
+  }
+
+  
+svg:has(path:hover) path:not(:hover) {
+    opacity: 0.5;
+}
+  
+  
+.selected:is(path) {
+    fill: var(--color);
+}
+  
+.legend-item.selected {
+    font-weight: bold;
+    text-decoration: underline;
+}

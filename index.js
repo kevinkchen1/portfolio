@@ -41,4 +41,3 @@ if (profileStats) {
   }
   
   loadProfileStats();
-  
