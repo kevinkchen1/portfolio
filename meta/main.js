@@ -95,6 +95,7 @@ function displayStats() {
   statsFlex.append('div').attr('class', 'stat-value').text(maxDepth);
 }
 
+
 function renderTooltipContent(commit) {
   const link = document.getElementById('commit-link');
   const date = document.getElementById('commit-date');
