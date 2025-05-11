@@ -389,3 +389,41 @@ svg:has(path:hover) path:not(:hover) {
     font-weight: bold;
     text-decoration: underline;
 }
+
+.stats {
+    font-family: sans-serif;
+    max-width: 500px;
+    margin-bottom: 2em;
+  }
+  
+.stats dt {
+    font-weight: bold;
+    margin-top: 0.5em;
+}
+  
+.stats dd {
+    margin-left: 1em;
+    margin-bottom: 0.5em;
+}
+
+
+dl.info {
+    /* ... other styles ... */
+    transition-duration: 500ms;
+    transition-property: opacity, visibility;
+  }
+  
+dl.info[hidden]:not(:hover, :focus-within) {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+circle {
+    transition: 200ms;
+    transform-origin: center;
+    transform-box: fill-box;
+}
+  
+circle:hover {
+    transform: scale(1.5);
+}
