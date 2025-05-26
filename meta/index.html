@@ -29,12 +29,30 @@
     <link rel="stylesheet" href="../style.css">
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="main.js" defer></script>
+    <script src="meta.js" defer></script>
 </head>
 <body>
+  <div id="commit-filter" style="display: flex; align-items: baseline;">
+    <label style="flex: 1;">
+      Show commits until:
+      <input type="range" id="commit-progress" min="0" max="100" value="100">
+    </label>
+    <time id="commit-time" style="margin-left: auto;"></time>
+  </div>
+  <dl id="files">
+    <!-- we want the following structure for each file:
+    <div>
+      <dt>
+        <code>{file.name}</code>
+      </dt>
+      <dd>{file.lines.length} lines</dd>
+    </div>
+    -->
+  </dl>
     <div id="stats"></div>
     <h2>Commits by time of day</h2>
     <div id="chart"></div>
-      <dl id="commit-tooltip" class="info tooltip" hidden></dl>
+      <dl id="commit-tooltip" class="info tooltip" hidden> </dl>
       <dt>Commit</dt>
       <dd>
         <a href="" id="commit-link" target="_blank"></a>
@@ -53,6 +71,23 @@
       <dd id="commit-lines"></dd>
 
     </dl>
+    <!--<dl id="commit-tooltip" class="info tooltip" hidden>
+      <dt>Commit</dt>
+      <dd><a href="" id="commit-link" target="_blank"></a></dd>
+    
+      <dt>Date</dt>
+      <dd id="commit-date"></dd>
+    
+      <dt>Time</dt>
+      <dd id="commit-time"></dd>
+    
+      <dt>Author</dt>
+      <dd id="commit-author"></dd>
+    
+      <dt>Lines Edited</dt>
+      <dd id="commit-lines"></dd>
+    </dl>-->
+    
     <p id="selection-count">No commits selected</p>
     <dl id="language-breakdown" class="stats"></dl>
     <script type="module" src="../global.js"></script>
