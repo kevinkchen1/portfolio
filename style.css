@@ -477,5 +477,48 @@ dd {
     margin-left: 0;
 }
 
+#scrolly-1 {
+    position: relative;
+    display: flex;
+    gap: 1rem;
+  
+    > * {
+      flex: 1;
+    }
+  }
+  
+#scatter-story {
+    position: relative;
+  }
+  
+#scatter-plot {
+    position: sticky;
+    top: 0;
+    left: 0;
+    bottom: auto;
+    height: 50vh;
+}
 
+.stats-flex {
+    display: flex;
+    gap: 30px; /* spacing between stat items */
+    justify-content: start;
+  }
+  
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* center text under label */
+  }
+  
+  .stat-label {
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .stat-value {
+    margin-top: 4px;
+    text-align: center;
+  }
+  
   

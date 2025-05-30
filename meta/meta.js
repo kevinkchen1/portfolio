@@ -1,4 +1,4 @@
-let commitProgress = 100;
+/*let commitProgress = 100;
 
 let timeScale = d3
   .scaleTime()
@@ -29,4 +29,4 @@ function onTimeSliderChange() {
     .addEventListener("input", onTimeSliderChange);
   
   // Call once on load to initialize display
-  onTimeSliderChange();
+  onTimeSliderChange();*/

@@ -1,10 +1,25 @@
-//import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
+import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
+import scrollama from 'https://cdn.jsdelivr.net/npm/scrollama@3.2.0/+esm';
 let data = [];
 let commits = [];
 
 // Declare scales globally
 let xScale, yScale;
 let brushSelection = null;
+
+const timeDisplay = document.getElementById("commit-time");
+const slider = document.getElementById("commit-progress");
+slider.value = 100;
+let commitProgress = 100;
+let timeScale = d3
+    .scaleTime()
+    .domain([
+      d3.min(commits, (d) => d.datetime),
+      d3.max(commits, (d) => d.datetime),
+    ])
+    .range([0, 100]);
+let commitMaxTime = timeScale.invert(commitProgress);
+timeDisplay.textContent = commitMaxTime.toLocaleString();
 
 const width = 1000;
 const height = 600;
@@ -58,7 +73,7 @@ function processCommits() {
     });
 }
 
-function renderCommitInfo() {
+/*function renderCommitInfo() {
 
   const statsContainer = d3.select('#stats').append('div').attr('class', 'stats-container');
 
@@ -93,7 +108,41 @@ function renderCommitInfo() {
   statsFlex.append('div').attr('class', 'stat-item')
     .append('span').attr('class', 'stat-label').text('Maximum depth');
   statsFlex.append('div').attr('class', 'stat-value').text(maxDepth);
+}*/
+function renderCommitInfo() {
+  const statsContainer = d3.select('#stats')
+    .append('div')
+    .attr('class', 'stats-container');
+
+  statsContainer.append('h2')
+    .text('Summary')
+    .attr('class', 'summary-title');
+
+  const statsFlex = statsContainer.append('div')
+    .attr('class', 'stats-flex');
+
+  function appendStat(label, value) {
+    const statItem = statsFlex.append('div').attr('class', 'stat-item');
+    statItem.append('div').attr('class', 'stat-label').html(label);
+    statItem.append('div').attr('class', 'stat-value').text(value);
+  }
+
+  appendStat('Total <abbr title="Lines of code">LOC</abbr>', data.length);
+  appendStat('Total commits', commits.length);
+
+  const numberOfFiles = d3.group(data, d => d.file).size;
+  appendStat('Number of files', numberOfFiles);
+
+  const maxFileLength = d3.max(data, d => d.length);
+  appendStat('Maximum file length (lines)', maxFileLength);
+
+  const averageFileLength = d3.mean(data, d => d.length);
+  appendStat('Average file length (lines)', averageFileLength.toFixed(2));
+
+  const maxDepth = d3.max(data, d => d.depth);
+  appendStat('Maximum depth', maxDepth);
 }
+
 
 
 function renderTooltipContent(commit) {
@@ -525,7 +574,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         .map(([name, lines]) => {
           return { name, lines };
         });*/
-
+      
       let files = d3
         .groups(lines, (d) => d.file)
         .map(([name, lines]) => {
@@ -558,7 +607,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         .attr('style', (d) => `--color: ${colors(d.type)}`);
 
 
-      
+        console.log('filtered', filteredCommits)
       // You can also trigger filtering or rerendering here if needed
       // updateCommitsView();
       updateCommitInfo(lines, filteredCommits);
@@ -573,4 +622,100 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     // Call once on load to initialize display
     onTimeSliderChange();
+
+    
+    d3.select('#scatter-story')
+      .selectAll('.step')
+      .data(commits)
+      .join('div')
+      .attr('class', 'step')
+      .html(
+        (d, i) => `
+        On ${d.datetime.toLocaleString('en', {
+          dateStyle: 'full',
+          timeStyle: 'short',
+        })},
+        I made <a href="${d.url}" target="_blank">${
+          i > 0 ? 'another glorious commit' : 'my first commit, and it was glorious'
+        }</a>.
+        I edited ${d.totalLines} lines across ${
+          d3.rollups(
+            d.lines,
+            (D) => D.length,
+            (d) => d.file,
+          ).length
+        } files.
+        Then I looked over all I had made, and I saw that it was very good.
+      `,
+      );
+    let userHasScrolled = false;
+    window.addEventListener('scroll', () => (userHasScrolled = true));
+      
+    function onStepEnter(response) {
+      if (!userHasScrolled) return;
+      const stepCommit = response.element.__data__;
+      commitMaxTime = stepCommit.datetime;
+      commitProgress = timeScale(stepCommit.datetime);
+      slider.value = commitProgress;
+      timeDisplay.textContent = commitMaxTime.toLocaleString(undefined, {
+        dateStyle: 'long',
+        timeStyle: 'short'
+      });
+      //filterCommitsByTime();
+      filteredCommits = commits.filter((d) => d.datetime <= commitMaxTime);
+      let lines = filteredCommits.flatMap((d) => d.lines);
+      /*let files = d3
+        .groups(lines, (d) => d.file)
+        .map(([name, lines]) => {
+          return { name, lines };
+        });*/
+      
+      let files = d3
+        .groups(lines, (d) => d.file)
+        .map(([name, lines]) => {
+          return { name, lines };
+        })
+        .sort((a, b) => b.lines.length - a.lines.length);
+
+      let filesContainer = d3
+        .select('#files')
+        .selectAll('div')
+        .data(files, (d) => d.name)
+        .join(
+          // This code only runs when the div is initially rendered
+          (enter) =>
+            enter.append('div').call((div) => {
+              div.append('dt').append('code');
+              div.append('dd');
+            }),
+      );
+      let colors = d3.scaleOrdinal(d3.schemeTableau10);
+      // This code updates the div info
+      filesContainer.select('dt > code').text((d) => d.name);
+      filesContainer.select('dd').text((d) => `${d.lines.length} lines`);
+      filesContainer
+        .select('dd')
+        .selectAll('div')
+        .data((d) => d.lines)
+        .join('div')
+        .attr('class', 'loc')
+        .attr('style', (d) => `--color: ${colors(d.type)}`);
+
+
+        console.log('filtered', filteredCommits)
+
+      updateCommitInfo(lines, filteredCommits);
+      updateScatterPlot(data, filteredCommits);
+      //renderFileStats();
+    }
+
+
+    const scroller = scrollama();
+    scroller
+      .setup({
+        container: '#scrolly-1',
+        step: '#scrolly-1 .step',
+      })
+      .onStepEnter(onStepEnter);
+        
 });
